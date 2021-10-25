@@ -1,15 +1,34 @@
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.geometry.Rectangle2D;
 
-import java.awt.geom.Rectangle2D;
 
 public class heroes {
-    // load the image
+    private double x;
+    private double y;
 
-    Image spriteSheet = new Image("C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heroes.png");
-    sprite = new ImageView(spriteSheet);
-    sprite.setViewport(new Rectangle2D(20,0,65,100));
-    sprite.setX(200);
-    sprite.setY(300);
+    Image spriteSheet = new Image("C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heros.png");
+    ImageView sprite = new ImageView(spriteSheet);
 
+    public heroes (double x, double y){
+        this.x=x;
+        this.y=y;
+        sprite.setViewport(new Rectangle2D(x,y,65,100));
+    }
+
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+     public ImageView getSprite(){
+        return sprite;
+     }
+    
 }
+
+/*
+
+ */
