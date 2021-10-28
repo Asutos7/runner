@@ -1,34 +1,32 @@
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.geometry.Rectangle2D;
 
-
-public class heroes {
+public class heroes extends AnimatedThing{
+    private ImageView image;
     private double x;
-    private double y;
-
-    Image spriteSheet = new Image("C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heros.png");
-    ImageView sprite = new ImageView(spriteSheet);
-
-    public heroes (double x, double y){
-        this.x=x;
-        this.y=y;
-        sprite.setViewport(new Rectangle2D(x,y,65,100));
+    private heroes Hero;
+    public heroes (double x, double y,double width, double height, double index){
+        super(x,y,width,height, index, "C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heros.png");
     }
 
-    public double getX(){
+     public ImageView getImage(){
+        return super.getImage1();
+     }
+
+     void update(){
+        double ind=this.getIndex();
+        if(ind<500){
+            ind=ind+85;
+            x=x+50;
+            this.setIndex(ind);
+        }
+        else{
+            ind=0;
+            x=x+50;
+            this.setIndex(ind);
+        }
+     }
+
+    public double getX() {
         return x;
     }
-
-    public double getY(){
-        return y;
-    }
-     public ImageView getSprite(){
-        return sprite;
-     }
-    
 }
-
-/*
-
- */

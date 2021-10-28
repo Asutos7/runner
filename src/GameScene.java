@@ -1,43 +1,66 @@
-import javafx.scene.Parent;
+import javafx.animation.AnimationTimer;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.Group;
-import javafx.stage.Stage;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class GameScene extends Scene {
+    private heroes Hero= new heroes(200,0,65,100,20);
+    private staticThing left = new staticThing(0,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
+    private staticThing right = new staticThing(400,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
 
     public GameScene(Group parent, double height, double width) {
         super(parent,height,width);
-        // charger le désert
-        //Image image = new Image("C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
 
         // Scène du désert
 
-        //ImageView iv1 = new ImageView(image);
-        //iv1.setImage(image);
-        staticThing left = new staticThing(0,0,800,300,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
         ImageView left1= left.getImage1();
-        left1.setX(0);
+        left1.setX(Hero.getX()%800);
         left1.setY(0);
 
-        staticThing right = new staticThing(300,0,800,300,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
         ImageView right1= right.getImage1();
-        right1.setX(300);
+        right1.setX(400-Hero.getX()%800);
         right1.setY(0);
-        //Hero
 
-        heroes Hero = new heroes(435,0);
-        ImageView hero1=Hero.getSprite();
+        //Hero
+        ImageView hero1=Hero.getImage();
         hero1.setX(200);
         hero1.setY(250);
 
         //Camera qui reprend les coordonnées du héro
         Camera cam = new Camera(0,0);
 
+        timer.start();
         parent.getChildren().add(left1);
         parent.getChildren().add(right1);
-        parent.getChildren().add(hero1);
+        //Hero.getImage().setViewport(new Rectangle2D(Hero.getIndex(),0,75,100));
+        //parent.getChildren().add(desert);
+        parent.getChildren().add(Hero.getImage());
+
     }
+
+    public void Hero(){
+        Hero.getImage().setViewport(new Rectangle2D(Hero.getIndex(),0,75,100));
+    }
+
+    public void setLeft() {
+        left.getImage1().setViewport(new Rectangle2D(Hero.getX(),0,800,400));
+    }
+
+    public void setRight() {
+        right.getImage1().setViewport(new Rectangle2D(400- Hero.getX(),0,800,400));
+    }
+
+
+
+    AnimationTimer timer = new AnimationTimer() {
+        //@Override
+        public void handle(long time){
+            Hero.update();
+            left.update();
+            //Camera.update(time);
+            //GameScene.update(timer);
+        }
+    };
 
 }
