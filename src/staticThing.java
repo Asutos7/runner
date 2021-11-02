@@ -43,8 +43,8 @@ public class staticThing {
 
     void update(){
         //GameScene.Hero();
-        //GameScene.setLeft();
-        //GameScene.setRight();
+        GameScene.setLeft();
+        GameScene.setRight();
     }
 
 

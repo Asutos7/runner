@@ -16,7 +16,9 @@ public class Camera {
         return y;
     }
 
+    static void update(){
+        //
+    }
+
 }
 
-//image.largeur
-//image.getX()

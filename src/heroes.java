@@ -13,6 +13,7 @@ public class heroes extends AnimatedThing{
      }
 
      void update(){
+        GameScene.Hero();
         double ind=this.getIndex();
         if(ind<500){
             ind=ind+85;

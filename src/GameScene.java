@@ -5,9 +5,9 @@ import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
 public class GameScene extends Scene {
-    private heroes Hero= new heroes(200,0,65,100,20);
-    private staticThing left = new staticThing(0,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
-    private staticThing right = new staticThing(400,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
+    private static heroes Hero= new heroes(200,0,65,100,20);
+    private static staticThing left = new staticThing(0,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
+    private static staticThing right = new staticThing(400,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
 
     public GameScene(Group parent, double height, double width) {
         super(parent,height,width);
@@ -15,12 +15,12 @@ public class GameScene extends Scene {
         // Scène du désert
 
         ImageView left1= left.getImage1();
-        left1.setX(Hero.getX()%800);
-        left1.setY(0);
+        //left1.setX(0);
+        //left1.setY(0);
 
         ImageView right1= right.getImage1();
-        right1.setX(400-Hero.getX()%800);
-        right1.setY(0);
+        //right1.setX( 400-Hero.getX()%800);
+        //right1.setY(0);
 
         //Hero
         ImageView hero1=Hero.getImage();
@@ -34,20 +34,19 @@ public class GameScene extends Scene {
         parent.getChildren().add(left1);
         parent.getChildren().add(right1);
         //Hero.getImage().setViewport(new Rectangle2D(Hero.getIndex(),0,75,100));
-        //parent.getChildren().add(desert);
         parent.getChildren().add(Hero.getImage());
 
     }
 
-    public void Hero(){
+    public static void Hero(){
         Hero.getImage().setViewport(new Rectangle2D(Hero.getIndex(),0,75,100));
     }
 
-    public void setLeft() {
-        left.getImage1().setViewport(new Rectangle2D(Hero.getX(),0,800,400));
+    public static void setLeft() {
+        left.getImage1().setViewport(new Rectangle2D(Hero.getX()%800,0,800,400));
     }
 
-    public void setRight() {
+    public static void setRight() {
         right.getImage1().setViewport(new Rectangle2D(400- Hero.getX(),0,800,400));
     }
 
@@ -58,7 +57,7 @@ public class GameScene extends Scene {
         public void handle(long time){
             Hero.update();
             left.update();
-            //Camera.update(time);
+            Camera.update();
             //GameScene.update(timer);
         }
     };
