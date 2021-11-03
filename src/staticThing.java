@@ -40,13 +40,4 @@ public class staticThing {
     public ImageView getImage1(){
         return image1;
     }
-
-    void update(){
-        //GameScene.Hero();
-        GameScene.setLeft();
-        GameScene.setRight();
-    }
-
-
-
 }

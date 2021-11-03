@@ -5,22 +5,16 @@ import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
 public class GameScene extends Scene {
-    private static heroes Hero= new heroes(200,0,65,100,20);
+    private static heroes Hero= new heroes(20,0,65,100,20);
+    private static staticThing heart = new staticThing(0,0,50,50,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heart.png");
+    private static staticThing heart2 = new staticThing(0,0,50,50,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heart.png");
+    private static staticThing heart3 = new staticThing(0,0,50,50,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heart.png");
     private static staticThing left = new staticThing(0,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
     private static staticThing right = new staticThing(400,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
+    private static double heroRX = Hero.getX();
 
     public GameScene(Group parent, double height, double width) {
         super(parent,height,width);
-
-        // Scène du désert
-
-        ImageView left1= left.getImage1();
-        //left1.setX(0);
-        //left1.setY(0);
-
-        ImageView right1= right.getImage1();
-        //right1.setX( 400-Hero.getX()%800);
-        //right1.setY(0);
 
         //Hero
         ImageView hero1=Hero.getImage();
@@ -30,35 +24,58 @@ public class GameScene extends Scene {
         //Camera qui reprend les coordonnées du héro
         Camera cam = new Camera(0,0);
 
+        //Vie1
+        heart.getImage1().setX(720);
+        heart.getImage1().setY(40);
+
+        //Vie2
+        heart2.getImage1().setX(680);
+        heart2.getImage1().setY(40);
+
+        //Vie 3
+        heart3.getImage1().setX(640);
+        heart3.getImage1().setY(40);
+
         timer.start();
-        parent.getChildren().add(left1);
-        parent.getChildren().add(right1);
-        //Hero.getImage().setViewport(new Rectangle2D(Hero.getIndex(),0,75,100));
+        parent.getChildren().add(left.getImage1());
+        parent.getChildren().add(right.getImage1());
         parent.getChildren().add(Hero.getImage());
+        parent.getChildren().add(heart.getImage1());
+        parent.getChildren().add(heart2.getImage1());
+        parent.getChildren().add(heart3.getImage1());
 
     }
 
     public static void Hero(){
-        Hero.getImage().setViewport(new Rectangle2D(Hero.getIndex(),0,75,100));
+        Hero.getImage().setViewport(new Rectangle2D(Hero.getIndex(),0,85,100));
     }
 
     public static void setLeft() {
+        ImageView left1= left.getImage1();
         left.getImage1().setViewport(new Rectangle2D(Hero.getX()%800,0,800,400));
+        left1.setX(0);
+        left1.setY(0);
     }
 
     public static void setRight() {
-        right.getImage1().setViewport(new Rectangle2D(400- Hero.getX(),0,800,400));
+        ImageView right1= right.getImage1();
+        right.getImage1().setViewport(new Rectangle2D(0,0, Hero.getX()%800,400));
+        right1.setX(800-(Hero.getX()%800));
+        right1.setY(0);
+
     }
 
-
+    static void update(){
+        setLeft();
+        setRight();
+    }
 
     AnimationTimer timer = new AnimationTimer() {
         //@Override
         public void handle(long time){
             Hero.update();
-            left.update();
             Camera.update();
-            //GameScene.update(timer);
+            GameScene.update();
         }
     };
 
