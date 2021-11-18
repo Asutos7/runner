@@ -1,4 +1,3 @@
-import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 
 public class heroes extends AnimatedThing{
@@ -6,7 +5,7 @@ public class heroes extends AnimatedThing{
     private double x=0;//ici x représente le nombre de pixel du désert
     private heroes Hero;
     public heroes (double x, double y,double width, double height, double index,double altitude){
-        super(x,y,width,height, index, altitude,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heros.png");
+        super(x,y,width,height, index, altitude,"\\image\\heros.png");
     }
 
      public ImageView getImage(){
@@ -16,11 +15,6 @@ public class heroes extends AnimatedThing{
      void update(){
         GameScene.Hero();
         double ind=this.getIndex();
-
-         double altitude_max = 100;
-         double altitude_initial=250;
-         double altitude_up=altitude_initial;
-         double altitude_down=altitude_max;
          double sauter=this.sauter;
 
 
@@ -38,21 +32,6 @@ public class heroes extends AnimatedThing{
                 else{
                     this.setSauter(2);
                 }
-
-                /*if (altitude_up>altitude_max){
-                        altitude_up = altitude_up - 1;
-                        this.setAltitude(altitude_up);
-                }
-                if(altitude_up==altitude_max) {
-                    while (altitude_down < altitude_initial) {
-                        altitude_down = altitude_down + 10;
-                        this.setAltitude(altitude_down);
-                    }
-                }
-                if (altitude_down == altitude_initial) {
-                    this.setAltitude(altitude_initial);
-                    this.sauter=0;
-                }*/
             }
             else{
                 x=0;

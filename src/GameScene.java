@@ -7,31 +7,25 @@ import javafx.scene.image.ImageView;
 public class GameScene extends Scene {
 
     private static heroes Hero= new heroes(20,0,65,100,0,250);
-    private static staticThing heart = new staticThing(0,0,50,50,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heart.png");
-    private static staticThing heart2 = new staticThing(0,0,50,50,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heart.png");
-    private static staticThing heart3 = new staticThing(0,0,50,50,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\heart.png");
+    private static staticThing heart = new staticThing(0,0,50,50,"\\image\\heart.png");
+    private static staticThing heart2 = new staticThing(0,0,50,50,"\\image\\heart.png");
+    private static staticThing heart3 = new staticThing(0,0,50,50,"\\image\\heart.png");
     //J'ai eu l'accord pour pouvoir utiliser sa photo
-    private static staticThing Marine1 = new staticThing(0,0,50,50,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\Marine.png");
-    private static staticThing Marine2 = new staticThing(0,0,50,50,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\Marine.png");
-    private static staticThing Marine3 = new staticThing(0,0,50,50,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\Marine.png");
-    private static staticThing left = new staticThing(0,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
-    private static staticThing right = new staticThing(400,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert.png");
-    //private static staticThing left = new staticThing(0,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert2.jpg");
-    //private static staticThing right = new staticThing(400,0,800,400,"C:\\Users\\Asutos\\IdeaProjects\\runner\\image\\desert2.jpg");
+    private static staticThing Marine1 = new staticThing(0,0,50,50,"\\image\\Marine.png");
+    private static staticThing Marine2 = new staticThing(0,0,50,50,"\\image\\Marine.png");
+    private static staticThing Marine3 = new staticThing(0,0,50,50,"\\image\\Marine.png");
+    //private static staticThing left = new staticThing(0,0,800,400,"\\image\\desert.png");
+    //private static staticThing right = new staticThing(400,0,800,400,"\\image\\desert.png");
+    private static staticThing left = new staticThing(0,0,800,400,"\\image\\desert2.png");
+    private static staticThing right = new staticThing(400,0,800,400,"\\image\\desert2.png");
+    private static Vilain Foe1 = new Vilain(0,0,50,50,"\\image\\Marine.png");
+    private static Vilain Foe2 = new Vilain(0,0,50,50,"\\image\\transparent.png");
     private double x=0;
     private static double sauter=0;
     private double altitude;
 
     public GameScene(Group parent, double height, double width) {
         super(parent,height,width);
-
-
-
-        //Hero
-        /*ImageView hero1=Hero.getImage();
-        Hero.getImage().setX(200);
-        Hero.getImage().setY(altitude);*/
-
 
         //Camera qui reprend les coordonnées du héro
         Camera cam = new Camera(0,0);
@@ -63,6 +57,7 @@ public class GameScene extends Scene {
         timer.start();
         parent.getChildren().add(left.getImage1());
         parent.getChildren().add(right.getImage1());
+        //parent.getChildren().add(Vilain.getImage1());
         parent.getChildren().add(Hero.getImage());
         parent.getChildren().add(heart.getImage1());
         parent.getChildren().add(heart2.getImage1());
@@ -101,6 +96,17 @@ public class GameScene extends Scene {
 
     }
 
+    /*public static void setFoe(){
+        double choix=Vilain.getChoix();
+        if (choix==1){
+            ImageView Foe=Foe1.getImage();
+        }
+        else{
+            ImageView Foe=Foe2.getImage();
+        }
+    }*/
+
+
     static void update(){
         setLeft();
         setRight();
@@ -111,6 +117,7 @@ public class GameScene extends Scene {
         public void handle(long time){
             Hero.update();
             Camera.update();
+            Foe1.update();
             GameScene.update();
         }
     };

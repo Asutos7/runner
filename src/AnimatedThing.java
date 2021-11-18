@@ -9,14 +9,9 @@ public class AnimatedThing {
     private ImageView image1;
     private double altitude;
     private double index;
-    private double max_index;
-    //duration between two frames
-    private double duration;
-    // dimension of the window
+    // dimension de la fenêtre
     private double height;
     private double width;
-    // the offset between each frame
-    private double offset;
 
     public AnimatedThing(double x, double y, double width, double height,double index, double altitude,String filename){
         this.x=x;
