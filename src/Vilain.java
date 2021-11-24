@@ -1,40 +1,70 @@
-import javafx.geometry.Rectangle2D;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-public class Vilain {
-    private ImageView image;
+public class Vilain extends AnimatedThing{
+    private double choix;
     private double x;
     private double y;
-    private double width;
-    private double height;
-    private static double choix;
-    private ImageView image1= new ImageView();
-
-    public Vilain(double x,double y, double width, double height, String filename){
-        this.x=x;
-        this.y=y;
-        this.width=width;
-        this.height=height;
-        Image image = new Image(filename);
-        image1.setImage(image);
-        image1.setViewport(new Rectangle2D(x,y,width,height));
+    private double distance=0;
+    public Vilain(double x, double y,double width, double height, double index,double altitude){
+        super(x,y,width,height, index, altitude,"\\image\\Marine.png");
     }
 
+    //J'ai tenté de le faire afficher de manière aléatoire mais je n'ai pas réussi
+    // J'ai donc fait afficher de manière périodique
+    // Voici la trace de mon travail en commentaire de ce que j'ai tenté
     void update(){
-        if(Math.random()==1){
-            choix=1;
+        /*if(x<801){
+            x=x+1;
+            if(x%10==0){
+                System.out.println(x);
+                y=Math.random();
+                System.out.println(distance);
+                if(y<0.5){
+                    System.out.println(y);
+                    if(distance<801){
+                        distance=distance+1;
+                        choix=1;
+                    }
+                    else{
+                        distance=0;
+                    }
+                }
+                else{
+                    choix=2;
+                }
+            }
+        }
+        else{
+            x=0;
+        }*/
+        /*y=Math.random();
+        System.out.println(distance);
+        if(y<0.5){
+            System.out.println(y);
+            if(distance<801){
+                distance=distance+1;
+                choix=1;
+            }
+            else{
+                distance=0;
+            }
         }
         else{
             choix=2;
+        }*/
+        if(distance<801){
+            distance=distance+1;
+            choix=1;
         }
+        else{
+            distance=0;
+        }
+
     }
 
-    public static double getChoix(){
-        return  choix;
+    public double getDistance() {
+        return distance;
     }
 
-    public ImageView getImage(){
-        return image1;
+    public double getChoix() {
+        return choix;
     }
 }

@@ -19,6 +19,8 @@ public class staticThing {
         image1.setViewport(new Rectangle2D(x,y,width,height));
     }
 
+    //getter
+
     public ImageView getImage1(){
         return image1;
     }
