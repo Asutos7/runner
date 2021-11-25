@@ -4,6 +4,7 @@ public class Vilain extends AnimatedThing{
     private double y;
     private double distance=0;
     public Vilain(double x, double y,double width, double height, double index,double altitude){
+        //J'ai eu son accord pour pouvoir utiliser sa photo
         super(x,y,width,height, index, altitude,"\\image\\Marine.png");
     }
 
